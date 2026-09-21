@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cfsqlrw86aowa"]
+
+[ext_resource type="Script" uid="uid://brsl8xew41hu5" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://bijxd45yuug0f" path="res://resources/slime-1.png" id="2_qhqgy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grwth"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qhqgy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=657959891]
+script = ExtResource("1_g2els")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1233456716]
+polygon = PackedVector2Array(-14, 0, -14, 0, 15, 0, 20, -4, 23, -9, 23, -18, 17, -25, 4, -30, -4, -30, -17, -25, -23, -18, -23, -9, -20, -4, -15, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2028597335]
+texture_filter = 1
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_grwth")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=695091872]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1676486673]
+collision_layer = 2
+collision_mask = 2
+
+[node name="HitboxCollision" type="CollisionPolygon2D" parent="Hitbox" unique_id=559398324]
+polygon = PackedVector2Array(-14, 0, -14, 0, 15, 0, 20, -4, 23, -9, 23, -18, 17, -25, 4, -30, -4, -30, -17, -25, -23, -18, -23, -9, -20, -4, -15, 0)
+
+[node name="Winbox" type="Area2D" parent="." unique_id=997812046]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Winbox" unique_id=647001990]
+polygon = PackedVector2Array(-14, 0, -14, 0, 15, 0, 20, -4, 23, -9, 23, -18, 17, -25, 4, -30, -4, -30, -17, -25, -23, -18, -23, -9, -20, -4, -15, 0)
+
+[connection signal="body_entered" from="Hitbox" to="." method="die"]
+[connection signal="body_entered" from="Winbox" to="." method="win"]
