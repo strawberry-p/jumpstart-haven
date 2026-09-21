@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://b2w0a0xylenlw"]
+[gd_scene format=4 uid="uid://b2w0a0xylenlw"]
 
 [ext_resource type="Script" uid="uid://brsl8xew41hu5" path="res://scenes/player.gd" id="1_1kc1q"]
 [ext_resource type="Texture2D" uid="uid://bijxd45yuug0f" path="res://resources/slime-1.png" id="1_s6dok"]
+[ext_resource type="TileSet" uid="uid://qbctbcnta6be" path="res://resources/tileset.tres" id="3_4msxo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_grwth"]
 animations = [{
@@ -17,6 +18,7 @@ animations = [{
 [node name="Scene" type="Node2D" unique_id=1880083412]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1903183042]
+position = Vector2(126, 356)
 script = ExtResource("1_1kc1q")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player" unique_id=1908545401]
@@ -26,3 +28,7 @@ polygon = PackedVector2Array(-14, 0, -14, 0, 15, 0, 20, -4, 23, -9, 23, -18, 17,
 texture_filter = 1
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_grwth")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2017189316]
+tile_map_data = PackedByteArray("AAADACQAAAAAAAEAAAAEACQAAAABAAEAAAAFACQAAAACAAEAAAAGACQAAAAAAAEAAAAHACQAAAABAAEAAAAIACQAAAACAAEAAAAJACQAAAAAAAEAAAAKACQAAAABAAEAAAALACQAAAACAAEAAAA=")
+tile_set = ExtResource("3_4msxo")
