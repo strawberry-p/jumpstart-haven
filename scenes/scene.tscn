@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b2w0a0xylenlw"]
+
+[ext_resource type="Script" uid="uid://brsl8xew41hu5" path="res://scenes/player.gd" id="1_1kc1q"]
+[ext_resource type="Texture2D" uid="uid://bijxd45yuug0f" path="res://resources/slime-1.png" id="1_s6dok"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grwth"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s6dok")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Scene" type="Node2D" unique_id=1880083412]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1903183042]
+script = ExtResource("1_1kc1q")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player" unique_id=1908545401]
+polygon = PackedVector2Array(-14, 0, -14, 0, 15, 0, 20, -4, 23, -9, 23, -18, 17, -25, 4, -30, -4, -30, -17, -25, -23, -18, -23, -9, -20, -4, -15, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1357179458]
+texture_filter = 1
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_grwth")
